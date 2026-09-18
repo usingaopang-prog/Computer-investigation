@@ -61,6 +61,18 @@ The htop photographs show a normal desktop process environment with roughly 121�
 ## RAM issues ##
 Missing tests: Applications, Security and Shutdowns Due to the slow nature of the RAM applications were hard to test as they slow and unresponsive and struggled to multitask. We did not have time to conduct Security investigation on time and as well as the shutdown of the machines. But through our own observations we have seen slow boot times which are caused by our HDD, as our OS is saved there. And it is known that HDD is not a good standard for fast booting
 
+## Network Investigation ##
+Our network speed test recorded 44.28 Mb/s download and 2.41 Mb/s upload. Our test server was in London servers and the observed latency was approximately 1028.6 ms.The routing output shows enp2s0, source/local address 192.168.0.69/24 and default route 192.168.0.1. Records in our screenshot show computers failed in address-command attempts; the successful route output provides the interface and source address.
+
+|Measurement| Observed result|
+|---||---|
+|Download|44.28 Mb/s|
+|Upload|2.41 Mb/s|
+|Latency|1028.6 ms to selected London server|
+|Interface|enp2s0|
+|Local IPv4|192.168.0.69/24|
+|Default gateway|192.168.0.1|
+
 ## Cooling ##
 We used htop to find the ranges which are approximately 51°C to 58°C across the displayed CPU cores during load. The highest value is about 58°C. At the same time, CPU utilization was shown at or near full load.
 <img width="557" height="587" alt="image" src="https://github.com/user-attachments/assets/27d64027-115f-4bc9-a510-f3f1484e47e7" />
@@ -78,6 +90,7 @@ The workload increased using the Linux stress utility while htop was used to obs
 ## Monitor ##
 We had a monitor that had and colour issue, it was unable to display properly, even when we put in on factory default it reminds to have this purple colour the issue is related to the cable responsible for transmitting the video signal from the computer to the display. We found that the issue was with the VGA cable and replacing the cable with HDMI made the monitor have colour. I would say monitor sizes are optimal and can give bad results when making something due to difference in the resolutions for certain applications and sites.
 <img width="743" height="414" alt="image" src="https://github.com/user-attachments/assets/01fe5319-fbfc-4a32-b077-20d1bb88cde2" />
+
 <img width="1600" height="719" alt="image" src="https://github.com/user-attachments/assets/ca8d2a99-30e7-47ed-b33b-d9f1c57d121b" />
 
 ## Reproduction ##
@@ -91,12 +104,13 @@ configuration evidence and dynamic performance evidence.
 We use the new smartctl -a /dev/sda to identify we posses a Seagate Barracuda 7200.12, model ST3500418AS, 500 GB, 512-byte logical/physical sectors, 7200 RPM and SATA 2.6 / 3.0 Gb/s capability. SMART diagnostics gave us an overall health assessment that deemed that the the drive has passed.
 <img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/67700cba-095c-4394-b05e-7c9a863e0fc9" />
 
-
-
 ## Physical Hardware and Network ##
-Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. We couldn’t test Network due to the poor connectivity we were experiencing.
+Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. 
 
+## Startup Performance ##
+We utilised systemd-analyze in the kernel which recorded 5.398 s kernel + 1 min 19.722 s userspace = 1 min 25.121 s in total. These statics provide use a concrete measurement for our previous hypothesis that slow boot is present on all computers.
 
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/9211c740-f715-4d52-825e-af0ce8264654" />
 
 ## Root Cause ##
 Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system. While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing tools to shorten our investigation time by waiting for network to operate again
