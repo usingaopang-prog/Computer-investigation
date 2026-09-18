@@ -73,6 +73,9 @@ Our network speed test recorded 44.28 Mb/s download and 2.41 Mb/s upload. Our te
 |Local IPv4|192.168.0.69/24|
 |Default gateway|192.168.0.1|
 
+<img width="1280" height="575" alt="image" src="https://github.com/user-attachments/assets/71c663ef-4da6-4e23-b33f-f1e626c8b607" />
+
+
 ## Cooling ##
 We used htop to find the ranges which are approximately 51°C to 58°C across the displayed CPU cores during load. The highest value is about 58°C. At the same time, CPU utilization was shown at or near full load.
 <img width="557" height="587" alt="image" src="https://github.com/user-attachments/assets/27d64027-115f-4bc9-a510-f3f1484e47e7" />
@@ -112,6 +115,17 @@ We utilised systemd-analyze in the kernel which recorded 5.398 s kernel + 1 min 
 
 <img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/9211c740-f715-4d52-825e-af0ce8264654" />
 
+## Security Audit ##
+The following screenshot of the security Audit shows us all the vulnerabilities that are present in the system. While some may not be active , they show that we need to improve the overall of security of the system of the PC. It lacks ways to scan for malware ,with the addition of the lack of other features that could enrich our systems overall reliability and consistency. 
+
+<img width="1280" height="575" alt="image" src="https://github.com/user-attachments/assets/85c671e3-25da-49a3-b777-b08a6219832a" />
+
+<img width="1280" height="575" alt="image" src="https://github.com/user-attachments/assets/8b661168-da18-4aa2-9218-4ee09185e94e" />
+
+<img width="1280" height="575" alt="image" src="https://github.com/user-attachments/assets/473f9b00-732b-471c-ae6d-d3253424179e" />
+
+<img width="1280" height="575" alt="image" src="https://github.com/user-attachments/assets/0087bd70-1995-410a-9b86-4e77b6495a3f" />
+
 ## Root Cause ##
 Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system. While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing tools to shorten our investigation time by waiting for network to operate again
 
@@ -123,14 +137,32 @@ VGA cables as they are not good enough as a cabling anymore and hard for others 
 The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live CPU and memory behavior, while the stress tests completed successfully. The observed CPU temperatures remained around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further investigation should concentrate on storage health, system logs, application behavior and power-related evidence.
 
 ## Commands used ##
-lscpu 
+lscpu
 
-stress --cpu 4 --timeout 60 stress --vm 2 --
+htop
 
-vm-bytes 256M --timeout 30
+vtop
 
-Page 9stress --cpu 2 --io 2 --timeout 45
-htop vtop
+stress --cpu 4 --timeout 60
+
+stress --vm 2 --vm-bytes 256M --timeout 30
+
+stress --cpu 2 --io 2 --timeout 45
+
+sudo smartctl -H /dev/sda
+
+sudo smartctl -a /dev/sda
+
+systemd-analyze
+
+speedtest
+
+ip link show
+
+ip route show
+
+Lynis audit output / recommendations
+
 ## Tags and Codes ##
 Only User05 had these shown :
 
