@@ -21,7 +21,7 @@ This investigation documents our findings during our testing phase on 14th Septe
 |Photograph 9| Smartctl drive identification and SMART health result|
 |Photograph 10| Startup |
 |Photograph 11| Lynis package, service and system-hardening suggestions|
-|Photograph 12| MLynis boot, authentication and filesystem suggestions |
+|Photograph 12| Lynis boot, authentication and filesystem suggestions |
 |Photograph 13| Lynis network, printing, logging and banner suggestions |
 |Photograph 14| Lynis audit, file-integrity, permissions, kernel and malware-scanning suggestions|
 
