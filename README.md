@@ -24,7 +24,9 @@ This investigation documents our findings during our testing phase on 14th Septe
 |Photograph 12| MLynis boot, authentication and filesystem suggestions |
 |Photograph 13| Lynis network, printing, logging and banner suggestions |
 |Photograph 14| Lynis audit, file-integrity, permissions, kernel and malware-scanning suggestions|
+
 *The photographs contain timestamps and terminal output, with it also showing potential fixes as well.*
+
 ## Baseline ##
 The BIOS screen establishes the main hardware baseline before the Linux operating system is considered. It identifies that each machine is known as Vostro 260 and shows BIOS version A10 with a build date of 22 February 2013. The same screen reports an Intel Core i5-2400 processor, 4096 MB of DDR3 memory at 1333 MHz in dual-channel mode, and a 500.1 GB SATA hard drive. These values provide the reference configuration for the rest of the investigation.
 |Component |Recorded information|
