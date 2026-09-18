@@ -8,17 +8,21 @@ This investigation documents our findings during our testing phase on 14th Septe
 
 ## Evidence Register ##
 
-|Evidence |Content captured| Use in investigation|
-|---|---|---|
-|Photograph 1 |BIOS Setup Utility | Baseline, BIOS, CPU, RAM and storage identification|
-|Photograph 2 |Linux lscpu output |CPU architecture, cores, frequency, cacheand virtualization|
-|Photographs 3–4 |htop and stress commands |CPU load, memory use, temperatures,tasks and test results and hardware images|
-|Photograph 5|smartctl drive identification and SMART health result|
-|Photograph 6| SMART self-test history and systemd-analyze timing|
-|Photograph 7| Captured systemd-analyze startup timing.|
-|Photograph 8| Speedtest CLI and Linux routing evidence|
-|Photograph 9|  Original stress/htop evidence.|
-|Photograph 10| Monitor| We conducted hardware changes |
+|Evidence |Content captured| 
+|---|---|
+|Photograph 1 |BIOS Setup Utility | 
+|Photograph 2 |Linux lscpu output |
+|Photograph 3|htop and stress commands |
+|Photograph 4|smartctl drive identification and SMART health result|
+|Photograph 5| SMART self-test history and systemd-analyze timing|
+|Photograph 6| Stress test|
+|Photograph 7| Monitor purple display|
+|Photograph 8| Monitor with clear display|
+|Photograph 9| Startup |
+|Photograph 10| Lynis package, service and system-hardening suggestions|
+|Photograph 11| MLynis boot, authentication and filesystem suggestions |
+|Photograph 12| Lynis network, printing, logging and banner suggestions |
+|Photograph 13| Lynis audit, file-integrity, permissions, kernel and malware-scanning suggestions|
 
 The photographs contain timestamps and terminal output, with it also showing potential fixes as well.
 ## Baseline ##
