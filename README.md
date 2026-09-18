@@ -77,30 +77,27 @@ We had a monitor that had and colour issue, it was unable to display properly, e
 The stress tests provide a controlled reproduction environment for high CPU and memory demand. During the runs, the computer continued to display htop information while the stress commands ran, and the terminal reported successful completion. No crash forced shutdown or visible lock-up is shown in the supplied evidence. While for the monitor, we were able to make the display purple again and determine that the cabling was the issue.
 
 ## Diagnostics ##
-Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits,
-cache and virtualisation support. htop provides live process, CPU, memory and temperature monitoring. The stress
-utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
+Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits, cache and virtualisation support. htop provides live process, CPU, memory and temperature monitoring. The stress utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
 configuration evidence and dynamic performance evidence.
-Storage
+## Storage ##
 The BIOS identifies the ST3500413AS 500.1 GB drive on SATA 0 and the optical drive on SATA 1.
-Physical Hardware and Network
-Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is
-thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for
-system. We couldn’t test Network due to the poor connectivity we were experiencing.
-Root Cause
-Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system.
-While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing
-tools to shorten our investigation time by waiting for network to operate again
-Recommendations
-The next investigation stage should focus on the areas that are not yet evidenced. Storage should be changed to SSD
-for faster times and startup times. The next would be adding more RAM for more multitasking and processing. Next
-is getting better internet for faster research and reliable connections. Lastly, monitor changes and move away from
+## Physical Hardware and Network ##
+Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. We couldn’t test Network due to the poor connectivity we were experiencing.
+## Root Cause ##
+Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system. While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing tools to shorten our investigation time by waiting for network to operate again
+## Recommendations ##
+The next investigation stage should focus on the areas that are not yet evidenced. Storage should be changed to SSD for faster times and startup times. The next would be adding more RAM for more multitasking and processing. Next is getting better internet for faster research and reliable connections. Lastly, monitor changes and move away from
 VGA cables as they are not good enough as a cabling anymore and hard for others to find root causes.
-Overall Findings
-The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux
-monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu
-confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live
-CPU and memory behaviour, while the stress tests completed successfully. The observed CPU temperatures remained
-around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further
-investigation should concentrate on storage health, system logs, application behaviour and power-related evidence.
+## Overall Findings ##
+The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live CPU and memory behavior, while the stress tests completed successfully. The observed CPU temperatures remained around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further investigation should concentrate on storage health, system logs, application behavior and power-related evidence.
 
+## Commands used ##
+lscpu
+stress --cpu 4 --timeout 60 stress --vm 2 --
+vm-bytes 256M --timeout 30
+Page 9stress --cpu 2 --io 2 --timeout 45
+htop vtop
+## Tags and Codes ##
+Only User05 had these shown :
+Service Tag:C4L095J
+Express Service Code: 2639536535
