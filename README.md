@@ -1,13 +1,17 @@
 # Computer-investigation Report #
-Computer investigation with the team 
+Hardware, Performance and Stress-Test Investigation
+
+*Team: Felicity, Tshifhiwa, Mahlatsi, Opang  and Kyle*
+
+
 ## Investigation Overview ##
 This investigation documents our findings during our testing phase on 14th September . Our Team conducted an inspection of selected computers in the office to identify hardware and performance-related issues. This inspection was conducted to establish a documented baseline and examine the computer performance and issues that may arise from the system in our company. 2. Investigation Structure. The original project is organized into 01-Baseline, 02-CPU, 03-RAM, 04-Storage, 05-Operating-System, 06-Drivers-Updates, 07-Startup, 08-Background-Processes, 09-Applications, 10-Security, 11-Shutdowns, 12-Cooling,13Physical-Hardware, 14-Power-Battery, 15-Network, 16-Workload, 17-Reproduction, 18-Diagnostics, 19 Root-Cause and 20-Recommendation. The supplied evidence directly supports several of these areas and only partially supports others.
 ## Evidence Register ##
 
 |Evidence |Content captured| Use in investigation|
 |---|---|---|
-|Photograph 1 |BIOS / Aptio Setup Utility | Baseline, BIOS, CPU, RAM and storageidentification|
-|Photograph 2 |Linux lscpu output |CPU architecture, cores, frequency, cacheand virtualisation|
+|Photograph 1 |BIOS Setup Utility | Baseline, BIOS, CPU, RAM and storage identification|
+|Photograph 2 |Linux lscpu output |CPU architecture, cores, frequency, cacheand virtualization|
 |Photographs 3–6 |htop and stress commands |CPU load, memory use, temperatures,tasks and test results and hardware images|
 |Photograph 7| Monitor| We conducted hardware changes |
 
@@ -41,7 +45,7 @@ We use command lscpu to confirm that we have a 64-bit x86 system that uses an In
 |Threads per core|1|
 |Socket|1
 |Frequency range|1600–3400 MHz|
-|Virtualisation|VT-x|
+|Virtualization|VT-x|
 |Cache|L1d 128 KiB; L1i 128 KiB; L2 1 MiB; L3 6 MiB|
 <img width="533" height="583" alt="image" src="https://github.com/user-attachments/assets/bf0b3953-fab9-4aa2-89eb-20f97bc2aa12" />
 
@@ -51,7 +55,7 @@ The BIOS records 4096 MB of DDR3 memory running at 1333 MHz in dual-channel mode
 
 ## Operating System ##
 The system is running Ubuntu 24.04.1 LTS. The captured software environment reports GNOME version 46 and Linux kernel version 6.14.0-35. The BIOS and firmware version are both recorded as A10. There are no issues with the operating system and no reported changes
-## 8. 08 – Background Processes ##
+## Background Processes ##
 The htop photographs show a normal desktop process environment with roughly 121–149 tasks visible and approximately 99 threads. Processes and services including systems, avail, message bus, toolkit and GNOME-related components are visible in the list. CPU percentages for individual background processes are generally small in the captured views. With how small our RAM is these small processes do consume 40% of Ram but only due to our
 ## RAM issues ##
 Missing tests: Applications, Security and Shutdowns Due to the slow nature of the RAM applications were hard to test as they slow and unresponsive and struggled to multitask. We did not have time to conduct Security investigation on time and as well as the shutdown of the machines. But through our own observations we have seen slow boot times which are caused by our HDD, as our OS is saved there. And it is known that HDD is not a good standard for fast booting
@@ -77,7 +81,7 @@ We had a monitor that had and colour issue, it was unable to display properly, e
 The stress tests provide a controlled reproduction environment for high CPU and memory demand. During the runs, the computer continued to display htop information while the stress commands ran, and the terminal reported successful completion. No crash forced shutdown or visible lock-up is shown in the supplied evidence. While for the monitor, we were able to make the display purple again and determine that the cabling was the issue.
 
 ## Diagnostics ##
-Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits, cache and virtualisation support. htop provides live process, CPU, memory and temperature monitoring. The stress utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
+Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits, cache and virtualization support. htop provides live process, CPU, memory and temperature monitoring. The stress utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
 configuration evidence and dynamic performance evidence.
 ## Storage ##
 The BIOS identifies the ST3500413AS 500.1 GB drive on SATA 0 and the optical drive on SATA 1.
@@ -92,12 +96,17 @@ VGA cables as they are not good enough as a cabling anymore and hard for others 
 The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live CPU and memory behavior, while the stress tests completed successfully. The observed CPU temperatures remained around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further investigation should concentrate on storage health, system logs, application behavior and power-related evidence.
 
 ## Commands used ##
-lscpu
+lscpu 
+
 stress --cpu 4 --timeout 60 stress --vm 2 --
+
 vm-bytes 256M --timeout 30
+
 Page 9stress --cpu 2 --io 2 --timeout 45
 htop vtop
 ## Tags and Codes ##
 Only User05 had these shown :
+
 Service Tag:C4L095J
+
 Express Service Code: 2639536535
