@@ -12,8 +12,13 @@ This investigation documents our findings during our testing phase on 14th Septe
 |---|---|---|
 |Photograph 1 |BIOS Setup Utility | Baseline, BIOS, CPU, RAM and storage identification|
 |Photograph 2 |Linux lscpu output |CPU architecture, cores, frequency, cacheand virtualization|
-|Photographs 3–6 |htop and stress commands |CPU load, memory use, temperatures,tasks and test results and hardware images|
-|Photograph 7| Monitor| We conducted hardware changes |
+|Photographs 3–4 |htop and stress commands |CPU load, memory use, temperatures,tasks and test results and hardware images|
+|Photograph 5|smartctl drive identification and SMART health result|
+|Photograph 6| SMART self-test history and systemd-analyze timing|
+|Photograph 7| Captured systemd-analyze startup timing.|
+|Photograph 8| Speedtest CLI and Linux routing evidence|
+|Photograph 9|  Original stress/htop evidence.|
+|Photograph 10| Monitor| We conducted hardware changes |
 
 The photographs contain timestamps and terminal output, with it also showing potential fixes as well.
 ## Baseline ##
@@ -78,6 +83,7 @@ Our network speed test recorded 44.28 Mb/s download and 2.41 Mb/s upload. Our te
 
 ## Cooling ##
 We used htop to find the ranges which are approximately 51°C to 58°C across the displayed CPU cores during load. The highest value is about 58°C. At the same time, CPU utilization was shown at or near full load.
+
 <img width="557" height="587" alt="image" src="https://github.com/user-attachments/assets/27d64027-115f-4bc9-a510-f3f1484e47e7" />
 
 ## Workload ##
