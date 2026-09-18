@@ -12,19 +12,19 @@ This investigation documents our findings during our testing phase on 14th Septe
 |---|---|
 |Photograph 1 |BIOS Setup Utility | 
 |Photograph 2 |Linux lscpu output |
-|Photograph 3|htop and stress commands |
-|Photograph 4|smartctl drive identification and SMART health result|
+|Photograph 3|Htop and stress commands |
+|Photograph 4|Smartctl drive identification and SMART health result|
 |Photograph 5| SMART self-test history and systemd-analyze timing|
 |Photograph 6| Stress test|
 |Photograph 7| Monitor purple display|
 |Photograph 8| Monitor with clear display|
-|Photograph 9| Startup |
-|Photograph 10| Lynis package, service and system-hardening suggestions|
-|Photograph 11| MLynis boot, authentication and filesystem suggestions |
-|Photograph 12| Lynis network, printing, logging and banner suggestions |
-|Photograph 13| Lynis audit, file-integrity, permissions, kernel and malware-scanning suggestions|
-
-The photographs contain timestamps and terminal output, with it also showing potential fixes as well.
+|Photograph 9| Smartctl drive identification and SMART health result|
+|Photograph 10| Startup |
+|Photograph 11| Lynis package, service and system-hardening suggestions|
+|Photograph 12| MLynis boot, authentication and filesystem suggestions |
+|Photograph 13| Lynis network, printing, logging and banner suggestions |
+|Photograph 14| Lynis audit, file-integrity, permissions, kernel and malware-scanning suggestions|
+*The photographs contain timestamps and terminal output, with it also showing potential fixes as well.*
 ## Baseline ##
 The BIOS screen establishes the main hardware baseline before the Linux operating system is considered. It identifies that each machine is known as Vostro 260 and shows BIOS version A10 with a build date of 22 February 2013. The same screen reports an Intel Core i5-2400 processor, 4096 MB of DDR3 memory at 1333 MHz in dual-channel mode, and a 500.1 GB SATA hard drive. These values provide the reference configuration for the rest of the investigation.
 |Component |Recorded information|
@@ -115,10 +115,10 @@ configuration evidence and dynamic performance evidence.
 
 ## Storage and SMART diagnostics ##
 We use the new smartctl -a /dev/sda to identify we posses a Seagate Barracuda 7200.12, model ST3500418AS, 500 GB, 512-byte logical/physical sectors, 7200 RPM and SATA 2.6 / 3.0 Gb/s capability. SMART diagnostics gave us an overall health assessment that deemed that the the drive has passed.
-<img width="2048" height="1536" alt="image" src="https://github.com/user-attachmyleents/assets/67700cba-095c-4394-b05e-7c9a863e0fc9" />
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/bbf107ee-8f77-437c-9210-d748440913d6" />
 
 ## Physical Hardware and Network ##
-Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. 
+Photograph 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. 
 
 ## Startup Performance ##
 We utilised systemd-analyze in the kernel which recorded 5.398 s kernel + 1 min 19.722 s userspace = 1 min 25.121 s in total. These statics provide use a concrete measurement for our previous hypothesis that slow boot is present on all computers.
