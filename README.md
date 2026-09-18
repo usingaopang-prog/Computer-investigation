@@ -137,31 +137,33 @@ VGA cables as they are not good enough as a cabling anymore and hard for others 
 The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live CPU and memory behavior, while the stress tests completed successfully. The observed CPU temperatures remained around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further investigation should concentrate on storage health, system logs, application behavior and power-related evidence.
 
 ## Commands used ##
-*lscpu
+•lscpu
 
-*htop
+•htop
 
-*vtop
+•vtop
 
-*stress --cpu 4 --timeout 60
+•stress --cpu 4 --timeout 60
 
-*stress --vm 2 --vm-bytes 256M --timeout 30
+•stress --vm 2 --vm-bytes 256M --timeout 30
 
-*stress --cpu 2 --io 2 --timeout 45
+•stress --cpu 2 --io 2 --timeout 45
 
-*sudo smartctl -H /dev/sda
+•sudo smartctl -H /dev/sda
 
-*sudo smartctl -a /dev/sda
+•sudo smartctl -a /dev/sda
 
-*systemd-analyze
+•systemd-analyze
 
-*speedtest
+•speedtest
 
-*ip link show
+•ip link show
 
-*ip route show
+•ip route show
 
-*Lynis audit output / recommendations
+•sudo apt install lynis
+
+•sudo lynis audit system
 
 ## Tags and Codes ##
 Only User05 had these shown :
