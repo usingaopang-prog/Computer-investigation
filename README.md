@@ -61,7 +61,7 @@ We use command lscpu to confirm that we have a 64-bit x86 system that uses an In
 <img width="533" height="583" alt="image" src="https://github.com/user-attachments/assets/bf0b3953-fab9-4aa2-89eb-20f97bc2aa12" />
 
 ## RAM ##
-The BIOS records 4096 MB of DDR3 memory running at 1333 MHz in dual-channel mode. During htop monitoring, approximately 3.74 GB of memory was shown as available to the operating system, with observed memory use around 1.0–1.8 GB in the captured sessions. Swap remained at 0 KB of 3.74 GB in the displayed monitor. IT using 40-43 % of RAM without any applications open shows that we need to have a change of RAM. With the figure below showing us that 1 Ram stick is 2 GB and takes all the RAM slots which is not enough for the system.
+The BIOS records 4096 MB of DDR3 memory running at 1333 MHz in dual-channel mode. During htop monitoring, approximately 3.74 GB of memory was shown as available to the operating system, with observed memory use around 1.0–1.8 GB in the captured sessions. Swap remained at 0 KB of 3.74 GB in the displayed monitor. IT using 40-43 % of RAM without any applications open shows that we need to have a change of RAM. With the figure below showing us that 1 Ram stick is 2 GB and takes all the RAM slots which is not enough for the system.Due to the slow nature of the RAM applications were hard to test as they slow and unresponsive and struggled to multitask.
 <img width="583" height="402" alt="image" src="https://github.com/user-attachments/assets/630af961-a0b6-4f29-8373-8187a3469066" />
 
 ## Operating System ##
@@ -69,8 +69,6 @@ The system is running Ubuntu 24.04.1 LTS. The captured software environment repo
 
 ## Background Processes ##
 The htop photographs show a normal desktop process environment with roughly 121–149 tasks visible and approximately 99 threads. Processes and services including systems, avail, message bus, toolkit and GNOME-related components are visible in the list. CPU percentages for individual background processes are generally small in the captured views. With how small our RAM is these small processes do consume 40% of Ram but only due to our
-## RAM issues ##
-Missing tests: Applications, Security and Shutdowns Due to the slow nature of the RAM applications were hard to test as they slow and unresponsive and struggled to multitask. We did not have time to conduct Security investigation on time and as well as the shutdown of the machines. But through our own observations we have seen slow boot times which are caused by our HDD, as our OS is saved there. And it is known that HDD is not a good standard for fast booting
 
 ## Network Investigation ##
 Our network speed test recorded 44.28 Mb/s download and 2.41 Mb/s upload. Our test server was in London servers and the observed latency was approximately 1028.6 ms.The routing output shows enp2s0, source/local address 192.168.0.69/24 and default route 192.168.0.1. Records in our screenshot show computers failed in address-command attempts; the successful route output provides the interface and source address.
@@ -116,7 +114,7 @@ Three main tools are visible in the evidence. The lscpu utility identifies the p
 configuration evidence and dynamic performance evidence.
 
 ## Storage and SMART diagnostics ##
-We use the new smartctl -a /dev/sda to identify we posses a Seagate Barracuda 7200.12, model ST3500418AS, 500 GB, 512-byte logical/physical sectors, 7200 RPM and SATA 2.6 / 3.0 Gb/s capability. SMART diagnostics gave us an overall health assessment that deemed that the the drive has passed.
+We use the new smartctl -a /dev/sda to identify we posses a Seagate Barracuda 7200.12, model ST3500418AS, 500 GB, 512-byte logical/physical sectors, 7200 RPM and SATA 2.6 / 3.0 Gb/s capability. SMART diagnostics gave us an overall health assessment that deemed that the drive has passed.Our own observations has deemed slow boot times are caused by our HDD, as our OS is saved there. And it is known that HDD is not a good standard for fast booting
 <img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/bbf107ee-8f77-437c-9210-d748440913d6" />
 
 ## Physical Hardware and Network ##
