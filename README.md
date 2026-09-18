@@ -3,6 +3,7 @@ Computer investigation with the team
 ## Investigation Overview ##
 This investigation documents our findings during our testing phase on 14th September . Our Team conducted an inspection of selected computers in the office to identify hardware and performance-related issues. This inspection was conducted to establish a documented baseline and examine the computer performance and issues that may arise from the system in our company. 2. Investigation Structure. The original project is organized into 01-Baseline, 02-CPU, 03-RAM, 04-Storage, 05-Operating-System, 06-Drivers-Updates, 07-Startup, 08-Background-Processes, 09-Applications, 10-Security, 11-Shutdowns, 12-Cooling,13Physical-Hardware, 14-Power-Battery, 15-Network, 16-Workload, 17-Reproduction, 18-Diagnostics, 19 Root-Cause and 20-Recommendation. The supplied evidence directly supports several of these areas and only partially supports others.
 ## Evidence Register ##
+
 |Evidence |Content captured| Use in investigation|
 |---|---|---|
 |Photograph 1 |BIOS / Aptio Setup Utility | Baseline, BIOS, CPU, RAM and storageidentification|
@@ -31,3 +32,75 @@ The BIOS screen establishes the main hardware baseline before the Linux operatin
 ## BIOS ##
 BIOS evidence is important because it identifies the physical platform and its main installed components independently of the operating system. It also confirms that the 4 GB memory figure and the 500.1 GB drive are not merely values reported by a Linux utility.
 <img width="1200" height="1600" alt="image" src="https://github.com/user-attachments/assets/60af3c4c-d224-47ed-9414-d87e2a217789" />
+## CPU ##
+We use command lscpu to confirm that we have a 64-bit x86 system that uses an Intel Core i5-2400. Four logical CPUs are online, matching the four physical cores shown in the output, with one thread per core and one socket. The processor is reported with a maximum frequency of 3400 MHz and a minimum of 1600 MHz. VT-x virtualization is also present. Cache information shown by lscpu includes 128 KiB L1 data cache, 128 KiB L1 instruction cache, 1 MiB L2 cache and 6 MiB L3 cache. The data shows a functioning four-core processor with normal frequency scaling available between the reported minimum and maximum values.
+|CPU characteristic|Value|
+|---|---|
+|Architecture|x86_64|
+|CPUs / cores|4/4|
+|Threads per core|1|
+|Socket|1
+|Frequency range|1600–3400 MHz|
+|Virtualisation|VT-x|
+|Cache|L1d 128 KiB; L1i 128 KiB; L2 1 MiB; L3 6 MiB|
+<img width="533" height="583" alt="image" src="https://github.com/user-attachments/assets/bf0b3953-fab9-4aa2-89eb-20f97bc2aa12" />
+
+## RAM ##
+The BIOS records 4096 MB of DDR3 memory running at 1333 MHz in dual-channel mode. During htop monitoring, approximately 3.74 GB of memory was shown as available to the operating system, with observed memory use around 1.0–1.8 GB in the captured sessions. Swap remained at 0 KB of 3.74 GB in the displayed monitor. IT using 40-43 % of RAM without any applications open shows that we need to have a change of RAM. With the figure below showing us that 1 Ram stick is 2 GB and takes all the RAM slots which is not enough for the system.
+<img width="583" height="402" alt="image" src="https://github.com/user-attachments/assets/630af961-a0b6-4f29-8373-8187a3469066" />
+
+## Operating System ##
+The system is running Ubuntu 24.04.1 LTS. The captured software environment reports GNOME version 46 and Linux kernel version 6.14.0-35. The BIOS and firmware version are both recorded as A10. There are no issues with the operating system and no reported changes
+## 8. 08 – Background Processes ##
+The htop photographs show a normal desktop process environment with roughly 121–149 tasks visible and approximately 99 threads. Processes and services including systems, avail, message bus, toolkit and GNOME-related components are visible in the list. CPU percentages for individual background processes are generally small in the captured views. With how small our RAM is these small processes do consume 40% of Ram but only due to our
+## RAM issues ##
+Missing tests: Applications, Security and Shutdowns Due to the slow nature of the RAM applications were hard to test as they slow and unresponsive and struggled to multitask. We did not have time to conduct Security investigation on time and as well as the shutdown of the machines. But through our own observations we have seen slow boot times which are caused by our HDD, as our OS is saved there. And it is known that HDD is not a good standard for fast booting
+## Cooling ##
+We used htop to find the ranges which are approximately 51°C to 58°C across the displayed CPU cores during load. The highest value is about 58°C. At the same time, CPU utilization was shown at or near full load.
+<img width="557" height="587" alt="image" src="https://github.com/user-attachments/assets/27d64027-115f-4bc9-a510-f3f1484e47e7" />
+
+## Workload ##
+The workload increased using the Linux stress utility while htop was used to observe system activity. The captured commands include a four-CPU stress workload for 60 seconds, a virtual-memory workload using two workers and 256 MB each for 30 seconds, and a CPU/I/O workload using two CPU workers and two I/O workers for 45 seconds. These tests were designed to place controlled demand on the processor, memory and I/O path.
+
+|Test|Observed configuration|Observed result|
+|---|---|---|
+|CPU stress|4 CPU workers; 60 seconds|Completed successfully|
+|Memory stress|2 VM workers; 256 MB; 30 seconds|Completed successfully|
+|CPU + I/O stress|2 CPU + 2 I/O workers; 45 seconds|Completed successfully|
+<img width="552" height="573" alt="image" src="https://github.com/user-attachments/assets/90019218-c2dd-48a5-99b1-e9ae3848bf29" />
+## Monitor ##
+We had a monitor that had and colour issue, it was unable to display properly, even when we put in on factory default it reminds to have this purple colour the issue is related to the cable responsible for transmitting the video signal from the computer to the display. We found that the issue was with the VGA cable and replacing the cable with HDMI made the monitor have colour. I would say monitor sizes are optimal and can give bad results when making something due to difference in the resolutions for certain applications and sites.
+<img width="743" height="414" alt="image" src="https://github.com/user-attachments/assets/01fe5319-fbfc-4a32-b077-20d1bb88cde2" />
+<img width="1600" height="719" alt="image" src="https://github.com/user-attachments/assets/ca8d2a99-30e7-47ed-b33b-d9f1c57d121b" />
+
+## Reproduction ##
+The stress tests provide a controlled reproduction environment for high CPU and memory demand. During the runs, the computer continued to display htop information while the stress commands ran, and the terminal reported successful completion. No crash forced shutdown or visible lock-up is shown in the supplied evidence. While for the monitor, we were able to make the display purple again and determine that the cabling was the issue.
+
+## Diagnostics ##
+Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits,
+cache and virtualisation support. htop provides live process, CPU, memory and temperature monitoring. The stress
+utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
+configuration evidence and dynamic performance evidence.
+Storage
+The BIOS identifies the ST3500413AS 500.1 GB drive on SATA 0 and the optical drive on SATA 1.
+Physical Hardware and Network
+Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is
+thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for
+system. We couldn’t test Network due to the poor connectivity we were experiencing.
+Root Cause
+Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system.
+While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing
+tools to shorten our investigation time by waiting for network to operate again
+Recommendations
+The next investigation stage should focus on the areas that are not yet evidenced. Storage should be changed to SSD
+for faster times and startup times. The next would be adding more RAM for more multitasking and processing. Next
+is getting better internet for faster research and reliable connections. Lastly, monitor changes and move away from
+VGA cables as they are not good enough as a cabling anymore and hard for others to find root causes.
+Overall Findings
+The investigation establishes a clear baseline for the Dell Vostro 260 and adds useful dynamic evidence from Linux
+monitoring and stress tests. The BIOS confirms the platform, processor, memory and storage configuration. lscpu
+confirms four CPU cores, a 1.6–3.4 GHz frequency range, VT-x and the displayed cache structure. htop shows live
+CPU and memory behaviour, while the stress tests completed successfully. The observed CPU temperatures remained
+around 51–58°C during the photographed load periods. No failure was reproduced in these short tests, so further
+investigation should concentrate on storage health, system logs, application behaviour and power-related evidence.
+
