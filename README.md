@@ -65,7 +65,7 @@ Missing tests: Applications, Security and Shutdowns Due to the slow nature of th
 Our network speed test recorded 44.28 Mb/s download and 2.41 Mb/s upload. Our test server was in London servers and the observed latency was approximately 1028.6 ms.The routing output shows enp2s0, source/local address 192.168.0.69/24 and default route 192.168.0.1. Records in our screenshot show computers failed in address-command attempts; the successful route output provides the interface and source address.
 
 |Measurement| Observed result|
-|---||---|
+|---|---|
 |Download|44.28 Mb/s|
 |Upload|2.41 Mb/s|
 |Latency|1028.6 ms to selected London server|
