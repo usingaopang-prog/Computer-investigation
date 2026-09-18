@@ -5,6 +5,7 @@ Hardware, Performance and Stress-Test Investigation
 
 ## Investigation Overview ##
 This investigation documents our findings during our testing phase on 14th September . Our Team conducted an inspection of selected computers in the office to identify hardware and performance-related issues. This inspection was conducted to establish a documented baseline and examine the computer performance and issues that may arise from the system in our company. 2. Investigation Structure. The original project is organized into 01-Baseline, 02-CPU, 03-RAM, 04-Storage, 05-Operating-System, 06-Drivers-Updates, 07-Startup, 08-Background-Processes, 09-Applications, 10-Security, 11-Shutdowns, 12-Cooling,13Physical-Hardware, 14-Power-Battery, 15-Network, 16-Workload, 17-Reproduction, 18-Diagnostics, 19 Root-Cause and 20-Recommendation. The supplied evidence directly supports several of these areas and only partially supports others.
+
 ## Evidence Register ##
 
 |Evidence |Content captured| Use in investigation|
@@ -85,11 +86,17 @@ The stress tests provide a controlled reproduction environment for high CPU and 
 ## Diagnostics ##
 Three main tools are visible in the evidence. The lscpu utility identifies the processor, topology, frequency limits, cache and virtualization support. htop provides live process, CPU, memory and temperature monitoring. The stress utility applies controlled workloads and reports when those workloads finish. Together, these tools provide both static
 configuration evidence and dynamic performance evidence.
-## Storage ##
-The BIOS identifies the ST3500413AS 500.1 GB drive on SATA 0 and the optical drive on SATA 1.
+
+## Storage and SMART diagnostics ##
+We use the new smartctl -a /dev/sda to identify we posses a Seagate Barracuda 7200.12, model ST3500418AS, 500 GB, 512-byte logical/physical sectors, 7200 RPM and SATA 2.6 / 3.0 Gb/s capability. SMART diagnostics gave us an overall health assessment that deemed that the the drive has passed.
+<img width="2048" height="1536" alt="image" src="https://github.com/user-attachments/assets/67700cba-095c-4394-b05e-7c9a863e0fc9" />
+
+
 
 ## Physical Hardware and Network ##
 Figure 3 shows the internal of the system, there is 2 Ram stick, network card, Battery and CPU. The issue seems is thermal paste looks almost done and seemly old on the CPUs. The Ram is 2 2GB of RAM which is too small for system. We couldn’t test Network due to the poor connectivity we were experiencing.
+
+
 
 ## Root Cause ##
 Slow processes are mainly caused by slow HDD and RAM as they are the most lacking in each computer system. While 1 monitor had an issue with cabling that caused wrong colours. Lastly is slow network which caused installing tools to shorten our investigation time by waiting for network to operate again
